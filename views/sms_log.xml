@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+        <!-- VIEWS OF THE TELEGRAM MESSAGE LOG -->
+      <record model="ir.ui.view" id="telegram_log_sms_tree">
+        <field name="name">Sent messages</field>
+        <field name="model">telegram.notifications.log.sms</field>
+        <field name="arch" type="xml">
+          <tree string="Messages">
+            <field name="user_id" />
+            <field name="issue_id"></field>
+            <field name="reference"  />
+            <field name="date"></field>
+          </tree>
+        </field>
+      </record>
+  
+      <record model="ir.ui.view" id="telegram_log_sms_form">
+        <field name="name">telegram.log.sms.form</field>
+        <field name="model">telegram.notifications.log.sms</field>
+        <field name="arch" type="xml">
+          <form string="Message">
+            <sheet>
+              <group>
+                <group name="groupleft">
+                    <field name="user_id" />
+                    <field name="issue_id"></field>
+                </group>
+                <group name="groupright">
+                    <field name="reference"  />
+                    <field name="date"></field>
+                </group>
+                <field name="message"></field>
+              </group>
+            </sheet>          
+          </form>
+        </field>
+      </record>
+  
+      <record model="ir.actions.act_window" id="action_telegram_log_sms">
+        <field name="name">Messages</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">telegram.notifications.log.sms</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face" >
+            No notifications sent
+          </p>      
+        </field>
+      </record>
+  
+      <menuitem 
+      id="menu_telegram_notification_main" 
+      name="Telegram" 
+      action="telegram_notifications.action_telegram_log_sms"
+      groups="telegram_notifications.telegram_user_management"
+      sequence="10"/>
+
+    </data>
+  </odoo>

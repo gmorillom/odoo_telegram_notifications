@@ -1,0 +1,56 @@
+<odoo>
+    <data>
+        <!-- VIEWS OF THE TEACHER OF TELEGRAM MOTIVES -->
+      <record model="ir.ui.view" id="telegram_issue_tree">
+        <field name="name">telegram.issue.tree</field>
+        <field name="model">telegram.notification.issue</field>
+        <field name="arch" type="xml">
+          <tree string="Reasons">
+            <field name="name" />
+            <field name="code"></field>
+            <field name="active"  />
+            <field name="save_message_in_log"></field>
+          </tree>
+        </field>
+      </record>
+
+      <record model="ir.ui.view" id="telegram_issue_form">
+        <field name="name">telegram.issue.form</field>
+        <field name="model">telegram.notification.issue</field>
+        <field name="arch" type="xml">
+          <form string="Reason">
+            <sheet>
+              <group>
+                <group name="groupleft">
+                    <field name="name" />
+                    <field name="code"></field>
+                    <field name="active"  />
+                    <field name="save_message_in_log"></field>
+                </group>
+              </group>
+            </sheet>          
+          </form>
+        </field>
+      </record>
+  
+      <record model="ir.actions.act_window" id="action_telegram_issue">
+        <field name="name">Reason</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">telegram.notification.issue</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face" >
+            No reasons recorded
+          </p>      
+        </field>
+      </record>
+  
+      <menuitem 
+      id="menu_telegram_notification_issue" 
+      name="Reasons"
+      action="telegram_notifications.action_telegram_issue" 
+      parent="telegram_notifications.menu_telegram_notification_main"
+      groups="telegram_notifications.telegram_admin" sequence="4"/>
+  
+    </data>
+  </odoo>

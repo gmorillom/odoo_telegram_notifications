@@ -1,0 +1,18 @@
+<odoo>
+    <data noupdate="1">
+
+        <record id="telegram_user_management" model="res.groups">
+            <field name="name">You can view the message log and manage Telegram users</field>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"></field>
+            <field name="category_id" ref=""></field>
+        </record>
+
+        <record id="telegram_admin" model="res.groups">
+            <field name="name">Administrator of all Telegram</field>
+            <field name="category_id" ref=""></field>
+            <field name="implied_ids" eval="[(6,0,[ref('telegram_notifications.telegram_user_management')])]"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+    </data>
+</odoo>

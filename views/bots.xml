@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+        <!-- VISTAS DEL MAESTRO DE BOTS DE TELEGRAM -->
+      <record model="ir.ui.view" id="telegram_bot_tree">
+        <field name="name">Bots</field>
+        <field name="model">telegram.notification.bot</field>
+        <field name="arch" type="xml">
+          <tree string="Bots">
+            <field name="name" />
+            <field name="name"></field>
+            <field name="issue_ids"  />
+            <field name="active"></field>
+          </tree>
+        </field>
+      </record>
+  
+      <record model="ir.ui.view" id="telegram_bot_form">
+        <field name="name">telegram.bot.form</field>
+        <field name="model">telegram.notification.bot</field>
+        <field name="arch" type="xml">
+          <form string="Bot">
+            <sheet>
+              <group>
+                <group name="groupleft">
+                    <field name="name" />
+                    <field name="telegram_bot_id" />
+                </group>
+                <group name="groupright">
+                    <field name="active"></field>
+                    <field name="issue_ids" widget="many2many_tags" />
+                </group>
+              </group>
+            </sheet>          
+          </form>
+        </field>
+      </record>
+  
+      <record model="ir.actions.act_window" id="action_telegram_bot">
+        <field name="name">Bots</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">telegram.notification.bot</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face" >
+            No bots registered
+          </p>      
+        </field>
+      </record>
+  
+      <menuitem 
+      id="menu_telegram_notification_bot" 
+      name="Bots"
+      action="telegram_notifications.action_telegram_bot" 
+      parent="telegram_notifications.menu_telegram_notification_main"
+      groups="telegram_notifications.telegram_admin" sequence="5"/>
+  
+    </data>
+  </odoo>
